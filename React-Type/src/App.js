@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TodaysPlan from './01/TodaysPlan';
 
 /*
  * Defalut Setting
@@ -32,11 +33,11 @@ import './App.css';
  * 핫 리로딩(Hot Reloading) 기능으로 저장한즉시 화면 변경
  **/
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <h1 className="title">Test React</h1>
+      <div className="body">
+        <TodaysPlan /> {/** TodayPlan 컴포넌트 활용 */}
       </div>
     );
   }
