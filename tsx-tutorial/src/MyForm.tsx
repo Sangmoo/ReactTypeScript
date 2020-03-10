@@ -12,7 +12,6 @@ function MyForm({ onSubmit }: MyFormProps) {
 
   const { name, description } = form;
 
-  // onChange 의 e 객체의 타입을 React.ChangeEvent<HTMLInputElement>로 지정해서 구현
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({
@@ -39,4 +38,4 @@ function MyForm({ onSubmit }: MyFormProps) {
   );
 }
 
-export default MyForm;
+export default MyForm; // 기본 내보내기
