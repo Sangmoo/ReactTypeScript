@@ -4,10 +4,16 @@
  */
 // /* eslint-disable */ 추가하면 eslint 에러 무시하고 실행
 import React from "react";
-import ReducerSample from "./ReducerSample";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
 function App() {
-  return <ReducerSample />;
+  return (
+    <>
+      <TodoForm />
+      <TodoList />
+    </>
+  );
 }
 
 export default App;
