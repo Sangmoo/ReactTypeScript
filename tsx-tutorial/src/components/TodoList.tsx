@@ -1,28 +1,14 @@
 /**
- * todos 라는 배열을 사용하여 여러개의 TodoItems 컴포넌트를 렌더링해주는 작업
+ * TodoList 컴포넌트에서 Context 안의 상태를 조회하여 내용을 렌더링
+ * 커스텀 Hook을 만들었기 때문에 간단하게 처리
  */
 import React from "react";
 import TodoItem from "./TodoItem";
+import { useTodosState } from "../contexts/TodosContext";
 
-// 배열에 대한 상태가 존재하지 않으므로 이 배열을 임시적으로 TodoList 컴포넌트 내부에서 선언
 function TodoList() {
-  const todos = [
-    {
-      id: 1,
-      text: "Context API 배우기",
-      done: true
-    },
-    {
-      id: 2,
-      text: "TypeScript 배우기",
-      done: true
-    },
-    {
-      id: 3,
-      text: "TypeScript 와 Context API 함께 사용하기",
-      done: false
-    }
-  ];
+  // useTodosState 를 불러와서 호출하기만 하면 현재 상태를 조회 가능
+  const todos = useTodosState();
   return (
     <ul>
       {todos.map(todo => (

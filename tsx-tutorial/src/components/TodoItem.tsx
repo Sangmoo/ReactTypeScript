@@ -1,23 +1,41 @@
 /**
- * 할 일 항목에 대한 정보를 보여주는 컴포넌트
- * props 로는 todo 객체를 받아온다
+ * TodoItem 에서 항목을 클릭했을 때 액션을 취하는 기능
+ * 컴포넌트 내부에서 바로 액션을 디스패치
+ * 컨텍스트를 사용하지 않는다면 onToggle, onRemove props 를 가져와서 이를 호출하는 형태로 구현해야 한다
  */
 import React from "react";
 import "./TodoItem.css";
+import { useTodosDispatch, Todo } from "../contexts/TodosContext";
 
-export type TodoItemProps = {
-  todo: {
-    id: number;
-    text: string;
-    done: boolean;
-  };
+type TodoItemProps = {
+  todo: Todo; // TodoContext 에서 선언했던 타입을 불러왔습니다.
 };
 
 function TodoItem({ todo }: TodoItemProps) {
+  const dispatch = useTodosDispatch();
+
+  const onToggle = () => {
+    dispatch({
+      type: "TOGGLE",
+      id: todo.id
+    });
+  };
+
+  const onRemove = () => {
+    dispatch({
+      type: "REMOVE",
+      id: todo.id
+    });
+  };
+
   return (
     <li className={`TodoItem ${todo.done ? "done" : ""}`}>
-      <span className="text">{todo.text}</span>
-      <span className="remove">(X)</span>
+      <span className="text" onClick={onToggle}>
+        {todo.text}
+      </span>
+      <span className="remove" onClick={onRemove}>
+        (X)
+      </span>
     </li>
   );
 }

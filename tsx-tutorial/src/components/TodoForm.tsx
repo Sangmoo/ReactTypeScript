@@ -1,15 +1,21 @@
 /**
- * 새 항목을 등록할 수 있는 컴포넌트
- * input의 value값은 useState를 통해서 관리
+ * TodoForm 에서 새 항목을 등록하는 작업
+ * useTodosDispatch Hook 을 통해 dispatch 함수를 받아오고, 액션을 디스패치
  */
 import React, { useState } from "react";
+import { useTodosDispatch } from "../contexts/TodosContext";
 
 function TodoForm() {
   const [value, setValue] = useState("");
+  const dispatch = useTodosDispatch();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 새 항목 생성하기
+    dispatch({
+      // 액션의 type 이 자동완성, 타입 검사를 통해 오류 확인 가능
+      type: "CREATE",
+      text: value
+    });
     setValue("");
   };
 
