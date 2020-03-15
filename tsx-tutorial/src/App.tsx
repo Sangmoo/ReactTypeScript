@@ -1,5 +1,6 @@
 /**
  * 컴포넌트에서 Context 사용
+ * 컴포넌트 내부에서 바로 액션을 디스패치
  */
 import React from "react";
 import TodoForm from "./components/TodoForm";
